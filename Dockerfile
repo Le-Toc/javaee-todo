@@ -9,5 +9,5 @@ FROM eclipse-temurin:17-jre
 WORKDIR /app
 COPY --from=build /app/target/javaee-todo-microbundle.jar /app/app.jar
 EXPOSE 8080
-VOLUME ["/app"]
-CMD ["java","-jar","/app/app.jar","--noCluster"]
+VOLUME ["/data"]
+CMD ["java","-jar","/app/app.jar","--noCluster","--rootDir","/data"]
