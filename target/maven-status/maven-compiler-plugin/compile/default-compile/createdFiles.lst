@@ -1,0 +1,5 @@
+com\example\todo\Todo.class
+com\example\todo\TodoResource.class
+com\example\todo\TodoService.class
+com\example\todo\CORSFilter.class
+com\example\todo\RestApplication.class
