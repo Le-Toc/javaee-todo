@@ -10,4 +10,8 @@ WORKDIR /app
 COPY --from=build /app/target/javaee-todo-microbundle.jar /app/app.jar
 EXPOSE 8080
 VOLUME ["/data"]
-CMD ["java","-jar","/app/app.jar","--noCluster","--rootDir","/data"]
+CMD ["java",
+     "-DJDBC_DATABASE_URL=${JDBC_DATABASE_URL}",
+     "-DJDBC_DATABASE_USER=${JDBC_DATABASE_USER}",
+     "-DJDBC_DATABASE_PASSWORD=${JDBC_DATABASE_PASSWORD}",
+     "-jar","/app/app.jar","--noCluster","--rootDir","/data"]

@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.2">
   <persistence-unit name="todoPU" transaction-type="JTA">
-    <jta-data-source>jdbc/__default</jta-data-source>
     <class>com.example.todo.Todo</class>
     <properties>
-      <property name="eclipselink.logging.level" value="INFO"/>
-      <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
-      <property name="javax.persistence.jdbc.url" value="jdbc:h2:file:./todo-db;DB_CLOSE_DELAY=-1;MODE=LEGACY"/>
-      <property name="javax.persistence.jdbc.user" value="sa"/>
-      <property name="javax.persistence.jdbc.password" value=""/>
+      <!-- Postgres via system properties -->
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.url" value="${JDBC_DATABASE_URL}"/>
+      <property name="javax.persistence.jdbc.user" value="${JDBC_DATABASE_USER}"/>
+      <property name="javax.persistence.jdbc.password" value="${JDBC_DATABASE_PASSWORD}"/>
+      <!-- Dev-friendly schema handling -->
       <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
       <property name="eclipselink.ddl-generation.output-mode" value="database"/>
+      <property name="eclipselink.logging.level" value="INFO"/>
     </properties>
   </persistence-unit>
 </persistence>
